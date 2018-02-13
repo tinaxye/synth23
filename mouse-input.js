@@ -19,6 +19,7 @@ A - S - D - A - G - D - S - G
 var freqs = [174, 196, 220, 246, 261];
 var oscs = [];
 var octave = 1;
+var range = 0;
 
 var names = ['A', 'S', 'D', 'F', 'G'];
 //corresponding notes matched with frequency
@@ -80,9 +81,18 @@ function draw() {
       	lengths[i] += 5;
     	ellipse(50 + 100 * i, height/2 - 20 + lengths[i], 40, 40);
     }
-    text(names[i], 50 + 100 * i, height - 90);
-  }
-  
+    text(names[i], 50 + 100 * i, height - 100);
+	}
+	push();
+		stroke('gray');
+		fill('gray');
+		line(width/2 - 3 * width/8, height - 50, width/2 + 3 * width/8, height - 50);
+		ellipse(width/2 + range * width/8, height - 50, 20, 20);
+	pop();
+	fill('gray');
+	text('8va', width/2, height - 20);
+	text('-', width/2 - 3 * width/7, height - 46);
+	text ('+', width/2 + 3 * width/7, height - 46);
   //background(backgroundColor)
   //text('click here,\nthen press a\n key to play', width / 2, 40);
 }
@@ -91,10 +101,12 @@ function mouseWheel(event) {
 	if (event.delta > 0) {
 		if (octave > 1/8) {
 			octave /= 2
+			range -= 1
 		}
 	} else if (event.delta <= 0) {
-		if (octave < 16) {
+		if (octave < 8) {
 			octave *= 2
+			range += 1
 		}
 	}
 	for (var i = 0; i < freqs.length; i += 1) {
