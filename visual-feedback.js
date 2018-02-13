@@ -56,7 +56,7 @@ function draw() {
     stroke('gray');
     line(50 + 100 * i, 40, 50 + 100 * i, height/2 - 20);
     pop();
-    
+    colorMode(HSB);
     if (keyPress[i]) {
       /*
       color is dependent on the number of oscillators present,
