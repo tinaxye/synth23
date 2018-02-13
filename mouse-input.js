@@ -16,19 +16,19 @@ A - S - D - A - G - D - S - G
 //reshaped as arrays for easy expansion
 //Tbh, a dictionary would be even better LOL
 //base frequencies
-var freqs = [174, 196, 220, 246, 261];
+var freqs = [130, 146, 164, 174, 196, 220, 246, 261];
 var oscs = [];
 var octave = 1;
 var range = 0;
 
-var names = ['A', 'S', 'D', 'F', 'G'];
+var names = ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K'];
 //corresponding notes matched with frequency
 var piano = ['f', 'g', 'a', 'b', 'c'];
 //arrays for playing and key press booleans
-var playing = [false, false, false, false, false];
-var keyPress = [false, false, false, false, false];
+var playing = [false, false, false, false, false, false, false, false];
+var keyPress = [false, false, false, false, false, false, false, false];
 //controls rising and falling of the knobs
-var lengths = [0, 0, 0, 0, 0];
+var lengths = [0, 0, 0, 0, 0, 0, 0, 0];
 
 function setup() {
   print(typeof names);
@@ -68,7 +68,7 @@ function draw() {
       knob "lights up" with a color when the corresponding key
       is pressed.
       */
-      fill(360/playing.length * i, 75, 50);
+      fill((360/playing.length) * (i+1), 75, 50);
     	ellipse(50 + 100 * i, height/2 - 20 + lengths[i], 40, 40);
       //controls the rising action of the key
       if (lengths[i] > - (height/2 - 60))
@@ -127,6 +127,12 @@ function keyPressed() {
     index = 3;
   } else if (key == 'G') {
     index = 4;
+  } else if (key == 'H') {
+    index = 5;
+  } else if (key == 'J') {
+    index = 6;
+  } else if (key == 'K') {
+    index = 7;
   }
   if (oscs[index]) {
     oscs[index].amp(0.5, 0.1);
@@ -148,6 +154,12 @@ function keyReleased() {
     index = 3;
   } else if (key == 'G') {
     index = 4;
+  } else if (key == 'H') {
+    index = 5;
+  } else if (key == 'J') {
+    index = 6;
+  } else if (key == 'K') {
+    index = 7;
   }
   if (oscs[index]) {
     oscs[index].amp(0, 0.5);
