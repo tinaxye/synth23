@@ -57,7 +57,7 @@ function draw() {
     stroke('gray');
     line(50 + 100 * i, 40, 50 + 100 * i, height/2 - 20);
     pop();
-    
+    aolorMode(HSB);
     if (keyPress[i]) {
       /*
       color is dependent on the number of oscillators present,
@@ -90,7 +90,7 @@ function draw() {
 		ellipse(width/2 + range * width/8, height - 50, 20, 20);
 	pop();
 	fill('gray');
-	text('8va', width/2, height - 20);
+	text('8va / mousewheelg', width/2, height - 20);
 	text('-', width/2 - 3 * width/7, height - 46);
 	text ('+', width/2 + 3 * width/7, height - 46);
   //background(backgroundColor)
